@@ -7,7 +7,7 @@ up :
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) up -d
 
 down :
-	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) down -v
+	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) down
 
 stop :
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) stop
@@ -15,10 +15,13 @@ stop :
 start :
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) start
 
-rebuild : down
+re : clean
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) up --build
 
 status :
 	docker ps
+
+clean :
+	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) down -v
 
 .PHONY : all up down stop start status

@@ -9,7 +9,7 @@ services:
       - inception
     restart: always
     volumes:
-      - ../../data:/var/lib/mysql
+      - /home/k2matu/data/mysql:/var/lib/mysql
 
   nginx:
     build: requirements/nginx/.
@@ -26,7 +26,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ../../data:/var/www/html
+      - /home/k2matu/data/wordpress:/var/www/html
 
   wordpress:
     build: requirements/wordpress/.
@@ -40,9 +40,10 @@ services:
       - inception
     restart: always
     volumes:
-      - ../../data:/var/www/html
+      - /home/k2matu/data/wordpress:/var/www/html
 
 networks:
   inception:
     driver: bridge
+
 
