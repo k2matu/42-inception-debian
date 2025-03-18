@@ -12,10 +12,10 @@ chmod +x wp-cli.phar
 
 ./wp-cli.phar core download --allow-root
 
-./wp-cli.phar config create --dbname=wordpress_db --dbuser=wp_user --dbpass=password --dbhost=mariadb --allow-root
+./wp-cli.phar config create --dbname=$MYSQL_DB --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=$MYSQL_HOST --allow-root
 
-./wp-cli.phar core install --url=localhost --title=inception --admin_user=admin --admin_password=admin --admin_email=admin@admin.com --allow-root
-./wp-cli.phar user create reg_user user@example.com --role=author --user_pass=password --allow-root
+./wp-cli.phar core install --url=$WP_URL --title=$WP_TITLE --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --allow-root
+./wp-cli.phar user create $WP_USER $WP_USER_EMAIL --role=$WP_USER_ROLE --user_pass=$WP_USER_PASSWORD --allow-root
 ./wp-cli.phar theme install astra --activate --allow-root
 
 mkdir -p /run/php
