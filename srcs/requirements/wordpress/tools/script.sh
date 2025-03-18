@@ -16,6 +16,7 @@ chmod +x wp-cli.phar
 
 ./wp-cli.phar core install --url=localhost --title=inception --admin_user=admin --admin_password=admin --admin_email=admin@admin.com --allow-root
 ./wp-cli.phar user create reg_user user@example.com --role=author --user_pass=password --allow-root
+./wp-cli.phar theme install astra --activate --allow-root
 
 mkdir -p /run/php
 
