@@ -2,8 +2,16 @@ all : up
 
 COMPOSE_FILE = ./srcs/docker-compose.yml
 ENV_FILE = ./srcs/.env
+DATA_DIR = /home/k2matu/data
+MYSQL_DIR = $(DATA_DIR)/mysql
+WORDPRESS_DIR = $(DATA_DIR)/wordpress
 
-up :
+create_dirs:
+	@mkdir -p $(MYSQL_DIR) $(WORDPRESS_DIR)
+	@sudo chown -R $(USER):$(USER) $(MYSQL_DIR) $(WORDPRESS_DIR)
+	@echo "Directories created or already exist."
+
+up : create_dirs
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) up -d
 
 down :
@@ -15,7 +23,7 @@ stop :
 start :
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) start
 
-re : clean
+re : clean create_dirs
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) up --build
 
 status :
@@ -23,5 +31,8 @@ status :
 
 clean :
 	docker-compose --env-file $(ENV_FILE) -f $(COMPOSE_FILE) down -v
+	docker volume prune -f
+	@echo "Removing data directories"
+	@sudo rm -rf $(DATA_DIR)
 
-.PHONY : all up down stop start status
+.PHONY : all up down stop start status create_dirs
