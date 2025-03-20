@@ -13,7 +13,8 @@ chmod +x wp-cli.phar
 
 ./wp-cli.phar core install --url=$WP_URL --title=$WP_TITLE --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --allow-root
 ./wp-cli.phar user create $WP_USER $WP_USER_EMAIL --role=$WP_USER_ROLE --user_pass=$WP_USER_PASSWORD --allow-root
-./wp-cli.phar theme install astra --activate --allow-root
+
+sed -i "/\/\* That's all, stop editing! Happy publishing. \*\//i define('WP_HOME', 'https://kmatjuhi.42.fr');\ndefine('WP_SITEURL', 'https://kmatjuhi.42.fr');" wp-config.php
 
 mkdir -p /run/php
 

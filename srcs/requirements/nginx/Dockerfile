@@ -1,6 +1,6 @@
 FROM debian:11
 
-RUN apt update && apt upgrade && apt install -y \
+RUN apt update && apt upgrade -y && apt install -y \
     nginx
 
 COPY conf/default ./etc/nginx/sites-available/.
