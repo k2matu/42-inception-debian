@@ -50,11 +50,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/k2matu/data/mysql
+      device: /home/kmatjuhi/data/mysql
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /home/k2matu/data/wordpress
+      device: /home/kmatjuhi/data/wordpress
       o: bind
