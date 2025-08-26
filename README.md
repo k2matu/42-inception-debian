@@ -21,5 +21,3 @@ Each container is **built from scratch** using custom Dockerfiles, ensuring modu
 
 ## Prerequisites
 - `Docker`
-
-## Compilation
