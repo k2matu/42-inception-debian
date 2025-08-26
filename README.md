@@ -5,7 +5,7 @@
 [![NGINX](https://img.shields.io/badge/NGINX-009639?logo=nginx&logoColor=white)](https://nginx.org/)
 
 ## Dockerized Multi-Service Infrastructure
-This project sets up a **multi-container infrastructure** using running on a **Debian virtual machine** using Docker Compose.  
+This project sets up a **multi-container infrastructure** using Docker Compose.  
 It includes:
 
 - **NGINX** (TLSv1.3)  
